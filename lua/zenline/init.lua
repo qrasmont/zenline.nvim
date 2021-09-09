@@ -1,5 +1,6 @@
 local modes = require('zenline.utils.modes').modes
 local colors = require('zenline.utils.colors').colors
+local git = require('zenline.utils.git')
 
 -- Get current mode as string
 local function get_current_mode()
@@ -22,9 +23,11 @@ local function statusline()
     local mode = colors.mode .. get_current_mode()
     local line_col = colors.linecol .. get_line_col()
     local filename = colors.dark .. get_filepath()
+    local git_status = colors.mode .. git.get_status()
 
     return table.concat {
         mode,
+        git_status,
         filename,
         "%=",
         line_col,
