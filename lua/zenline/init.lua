@@ -1,43 +1,5 @@
--- Set the highlight groups for the status line
--- TODO Create a theme config (match gruvbox theme colors)
-vim.cmd(string.format('hi %s %s %s %s', 'ZLineLignt', 'guifg=#3C3836', 'guibg=#EBDBB2', ''))
-vim.cmd(string.format('hi %s %s %s %s', 'ZLineDark', 'guifg=#EBDBB2', 'guibg=#3C3836', ''))
-vim.cmd(string.format('hi %s %s %s %s', 'ZLineMode', 'guifg=#1D2021', 'guibg=#928374', 'gui=bold'))
-vim.cmd(string.format('hi %s %s %s %s', 'ZLineLinCol', 'guifg=#1D2021', 'guibg=#928374', 'gui=bold'))
-
-
--- Highlight groups
-local colors = {
-    light        = "%#ZLineLight#",
-    dark         = "%#ZLineDark#",
-    mode         = "%#ZLineMode#",
-    git          = "%#ZLineGit#",
-    filename     = "%#ZLineFileName#",
-    linecol     = "%#ZLineLinCol#",
-}
-
--- Nvim modes
-local modes = {
-    ["n"]  = "N",
-    ["no"] = "N",
-    ["v"]  = "V",
-    ["V"]  = "V·LINE",
-    [""] = "V·BLOCK",
-    ["s"]  = "I",
-    ["S"]  = "I",
-    [""] = "I",
-    ["i"]  = "I",
-    ["ic"] = "I",
-    ["R"]  = "R",
-    ["Rv"] = "V·RPLC",
-    ["c"]  = "C",
-    ["cv"] = "V·EX",
-    ["r"]  = "ENT",
-    ["rm"] = "STDIN",
-    ["r?"] = "C",
-    ["!"]  = "SHELL",
-    ["t"]  = "TERM",
-}
+local modes = require('zenline.utils.modes').modes
+local colors = require('zenline.utils.colors').colors
 
 -- Get current mode as string
 local function get_current_mode()
@@ -62,7 +24,6 @@ local function statusline()
     local filename = colors.dark .. get_filepath()
 
     return table.concat {
-        colors.light,
         mode,
         filename,
         "%=",
@@ -72,6 +33,7 @@ end
 
 -- Do the status line setup
 local function setup()
+    require('zenline.utils.colors').set_line_highlights()
     vim.o.statusline = '%!v:lua.require\'zenline\'.statusline()'
     vim.api.nvim_exec([[
       augroup ZenLine
