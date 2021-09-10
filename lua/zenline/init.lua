@@ -23,11 +23,21 @@ local function statusline()
     local mode = colors.mode .. get_current_mode()
     local line_col = colors.linecol .. get_line_col()
     local filename = colors.dark .. get_filepath()
-    local git_status = colors.mode .. git.get_status()
+
+    local git_status  = git.get_status()
+    local git_status_fmt = ''
+    if git_status ~= '' then
+        git_status_fmt = string.format('%s  %s | %s+%s %s~%s %s-%s ',
+            colors.git, git_status.head,
+            colors.git_added, git_status.added,
+            colors.git_changed, git_status.changed,
+            colors.git_removed, git_status.removed
+        )
+    end
 
     return table.concat {
         mode,
-        git_status,
+        git_status_fmt,
         filename,
         "%=",
         line_col,

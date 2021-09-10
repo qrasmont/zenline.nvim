@@ -3,7 +3,12 @@ local theme_colors = {
     dark_background = '#3C3836',
     light_text = '#EBDBB2',
     light_background = '#EBDBB2',
-    dark_text = '#3C3836'
+    dark_text = '#3C3836',
+    black = '#1D2021',
+    grey = '#504945',
+    red = '#FB4934',
+    green = '#B8BB26',
+    orange = '#FE8019',
 }
 
 -- Color to Highlight group table
@@ -12,8 +17,11 @@ local colors = {
     dark         = "%#ZLineDark#",
     mode         = "%#ZLineMode#",
     git          = "%#ZLineGit#",
+    git_added    = "%#ZLineGitAdded#",
+    git_changed  = "%#ZLineGitChanged#",
+    git_removed  = "%#ZLineGitRemoved#",
     filename     = "%#ZLineFileName#",
-    linecol     = "%#ZLineLinCol#",
+    linecol      = "%#ZLineLinCol#",
 }
 
 -- Define highlights colors and style
@@ -21,6 +29,10 @@ local line_highlights = {
     {'ZLineLignt',{fg = theme_colors.dark_text, bg = theme_colors.light_background}},
     {'ZLineDark',{fg = theme_colors.light_text, bg = theme_colors.dark_background}},
     {'ZLineMode',{fg = theme_colors.dark_text, bg = theme_colors.light_background, style = 'bold'}},
+    {'ZLineGit',{fg = theme_colors.light_text, bg = theme_colors.black, style = 'bold'}},
+    {'ZLineGitAdded',{fg = theme_colors.green, bg = theme_colors.black, style = 'bold'}},
+    {'ZLineGitChanged',{fg = theme_colors.orange, bg = theme_colors.black, style = 'bold'}},
+    {'ZLineGitRemoved',{fg = theme_colors.red, bg = theme_colors.black, style = 'bold'}},
     {'ZLineLinCol',{fg = theme_colors.dark_text, bg = theme_colors.light_background, style = 'bold'}},
 }
 

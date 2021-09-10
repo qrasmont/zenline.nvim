@@ -6,11 +6,13 @@ local  function get_status()
   if not has_head then
       return ''
   end
-  return string.format('  %s | +%s ~%s -%s ',
-                       status.head,
-                       status.added,
-                       status.changed,
-                       status.removed)
+
+  return {
+      head = status.head,
+      added = status.added,
+      changed = status.changed,
+      removed = status.removed,
+  }
 end
 
 return {
