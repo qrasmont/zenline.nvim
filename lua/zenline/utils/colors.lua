@@ -1,9 +1,7 @@
 -- Define some theme colors to be use to color the line
 local theme_colors = {
-    dark_background = '#3C3836',
-    light_text = '#EBDBB2',
-    light_background = '#EBDBB2',
-    dark_text = '#3C3836',
+    light = '#EBDBB2',
+    dark = '#3C3836',
     black = '#1D2021',
     grey = '#504945',
     red = '#FB4934',
@@ -26,14 +24,14 @@ local colors = {
 
 -- Define highlights colors and style
 local line_highlights = {
-    {'ZLineLignt',{fg = theme_colors.dark_text, bg = theme_colors.light_background}},
-    {'ZLineDark',{fg = theme_colors.light_text, bg = theme_colors.dark_background}},
-    {'ZLineMode',{fg = theme_colors.dark_text, bg = theme_colors.light_background, style = 'bold'}},
-    {'ZLineGit',{fg = theme_colors.light_text, bg = theme_colors.black, style = 'bold'}},
+    {'ZLineLignt',{fg = theme_colors.dark, bg = theme_colors.light}},
+    {'ZLineDark',{fg = theme_colors.light, bg = theme_colors.dark}},
+    {'ZLineMode',{fg = theme_colors.dark, bg = theme_colors.light, style = 'bold'}},
+    {'ZLineGit',{fg = theme_colors.light, bg = theme_colors.black, style = 'bold'}},
     {'ZLineGitAdded',{fg = theme_colors.green, bg = theme_colors.black, style = 'bold'}},
     {'ZLineGitChanged',{fg = theme_colors.orange, bg = theme_colors.black, style = 'bold'}},
     {'ZLineGitRemoved',{fg = theme_colors.red, bg = theme_colors.black, style = 'bold'}},
-    {'ZLineLinCol',{fg = theme_colors.dark_text, bg = theme_colors.light_background, style = 'bold'}},
+    {'ZLineLinCol',{fg = theme_colors.dark, bg = theme_colors.light, style = 'bold'}},
 }
 
 -- Set a highlight
