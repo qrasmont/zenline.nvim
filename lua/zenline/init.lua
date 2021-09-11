@@ -38,8 +38,10 @@ local function statusline()
     return table.concat {
         mode,
         git_status_fmt,
+        colors.dark,
+        '%=',
         filename,
-        "%=",
+        '%=',
         line_col,
     }
 end
