@@ -3,9 +3,10 @@ local colors = require('zenline.utils.colors').colors
 local git = require('zenline.utils.git')
 
 -- Get current mode as string
-local function get_current_mode()
+local function get_current_colored_mode()
     local current_mode = vim.api.nvim_get_mode().mode
-    return string.format(" %s ", modes[current_mode]):upper()
+    return string.format("%s %s ", modes[current_mode][2],
+                                   modes[current_mode][1])
 end
 
 -- Get current line & column
@@ -20,7 +21,7 @@ end
 
 -- Draw status line
 local function statusline()
-    local mode = colors.mode .. get_current_mode()
+    local mode = get_current_colored_mode()
     local line_col = colors.linecol .. get_line_col()
     local filename = colors.dark .. get_filepath()
 

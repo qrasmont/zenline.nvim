@@ -7,13 +7,17 @@ local theme_colors = {
     red = '#FB4934',
     green = '#B8BB26',
     orange = '#FE8019',
+    blue = '#83A598',
 }
 
 -- Color to Highlight group table
 local colors = {
     light        = "%#ZLineLight#",
     dark         = "%#ZLineDark#",
-    mode         = "%#ZLineMode#",
+    mode_normal  = "%#ZLineModeNormal#",
+    mode_insert  = "%#ZLineModeInsert#",
+    mode_visual  = "%#ZLineModeVisual#",
+    mode_cmd     = "%#ZLineModeCmd#",
     git          = "%#ZLineGit#",
     git_added    = "%#ZLineGitAdded#",
     git_changed  = "%#ZLineGitChanged#",
@@ -26,7 +30,10 @@ local colors = {
 local line_highlights = {
     {'ZLineLignt',{fg = theme_colors.dark, bg = theme_colors.light}},
     {'ZLineDark',{fg = theme_colors.light, bg = theme_colors.dark}},
-    {'ZLineMode',{fg = theme_colors.dark, bg = theme_colors.light, style = 'bold'}},
+    {'ZLineModeNormal',{fg = theme_colors.dark, bg = theme_colors.light, style = 'bold'}},
+    {'ZLineModeInsert',{fg = theme_colors.dark, bg = theme_colors.blue, style = 'bold'}},
+    {'ZLineModeVisual',{fg = theme_colors.dark, bg = theme_colors.orange, style = 'bold'}},
+    {'ZLineModeCmd',{fg = theme_colors.dark, bg = theme_colors.green, style = 'bold'}},
     {'ZLineGit',{fg = theme_colors.light, bg = theme_colors.black, style = 'bold'}},
     {'ZLineGitAdded',{fg = theme_colors.green, bg = theme_colors.black, style = 'bold'}},
     {'ZLineGitChanged',{fg = theme_colors.orange, bg = theme_colors.black, style = 'bold'}},
