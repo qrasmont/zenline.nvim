@@ -1,6 +1,7 @@
 local modes = require('zenline.utils.modes').modes
 local colors = require('zenline.utils.colors').colors
 local git = require('zenline.utils.git')
+local gps = require('nvim-gps')
 
 -- Get current mode as string
 local function get_current_colored_mode()
@@ -47,14 +48,25 @@ local function statusline()
     }
 end
 
+local function winbar()
+    local gps_content = gps.is_available() and gps.get_location() or ''
+
+    return table.concat {
+        gps_content,
+        '%=%m %t'
+    }
+end
+
 -- Do the status line setup
 local function setup()
     require('zenline.utils.colors').set_line_highlights()
     vim.o.statusline = '%!v:lua.require\'zenline\'.statusline()'
+    vim.o.winbar = '%!v:lua.require\'zenline\'.winbar()'
     vim.api.nvim_exec([[
       augroup ZenLine
         autocmd!
         autocmd WinLeave,BufLeave * lua vim.wo.statusline=require'zenline'.statusline()
+        autocmd WinLeave,BufLeave * lua vim.wo.statusline=require'zenline'.winbar()
         autocmd BufWinEnter,WinEnter,BufEnter * set statusline<
         autocmd VimResized * redrawstatus
       augroup END
@@ -64,5 +76,6 @@ end
 -- Expose needed functions
 return {
     setup = setup,
-    statusline = statusline
+    statusline = statusline,
+    winbar = winbar
 }
