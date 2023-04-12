@@ -44,6 +44,7 @@ local function statusline()
         '%=',
         filename,
         '%=',
+        '%-10.S',
         line_col,
     }
 end
