@@ -1,7 +1,7 @@
 local modes = require('zenline.utils.modes').modes
 local colors = require('zenline.utils.colors').colors
 local git = require('zenline.utils.git')
-local gps = require('nvim-gps')
+local navic = require('nvim-navic')
 
 -- Get current mode as string
 local function get_current_colored_mode()
@@ -50,10 +50,10 @@ local function statusline()
 end
 
 local function winbar()
-    local gps_content = gps.is_available() and gps.get_location() or ''
+    local navic_content = navic.is_available() and navic.get_location() or ''
 
     return table.concat {
-        gps_content,
+        navic_content,
         '%=%m %t'
     }
 end
